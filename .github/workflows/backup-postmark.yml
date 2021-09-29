@@ -7,7 +7,7 @@ branding:
   color: 'green'
 on:
   schedule:
-    - cron:  "7 1 * * *" # Run on 7th min of 1st hour.
+    - cron:  "45 20 * * *" # Run per cron schedule
   push:
     branches:
     - main
