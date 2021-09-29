@@ -5,6 +5,7 @@
 We wanted to have a way to backup our Postmark templates automatically, so we coded this github workflow. It's not fully automatic but it works well enough. 
 
 ## Setup
+### Local
 
 Use `node` and `npm` to install the `postmark` command per the [postmark-cli](https://github.com/wildbit/postmark-cli) repository. You should be able to run `postmark --version` and get a response. 
 
@@ -28,6 +29,8 @@ Seed the templates, pasting the appropriate server token for each server (you co
 
 Now you have some backups you can manually add, commit and push to the repo. 
 
+### On your Fork
+
 Set Github secrets in settings for your repository. I have servers "staging" and "production", so I created three like this: 
 
 ```
@@ -38,7 +41,8 @@ POSTMARK_SERVER_TOKEN_STG
 
 The `postmark templates pull` command expects a `POSTMARK_SERVER_TOKEN` variable that matches the server in question, so we just assign as appropriate before the respective command in the workflow. 
 
-Adjust the `backup-postmark.yml` workflow: 
+Adjust the `backup-postmark.yml` workflow in the `.github/workflows` folder: 
 
 1. Edit the cron schedule. 
-2. Edit the github username and email params from Rick's. 
+2. Edit the github username and email params from Rick Cogley's. 
+3. Manually enable the workflow. 
