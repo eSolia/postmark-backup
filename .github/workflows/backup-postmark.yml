@@ -1,0 +1,57 @@
+# Workflow to backup postmark templates
+name: backup-postmark
+on:
+  schedule:
+    - cron:  "7 1 * * *" # Run on 7th min of 1st hour.
+  push:
+jobs:
+  process-postmark-backup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          submodules: true  # Fetch all
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+          node-version: '14'
+    - name: Setup postmark-cli
+      run: npm install postmark-cli -g
+    - name: Check
+      run: |
+          echo "Is there jq just in case:" 
+          which jq
+          echo "Postmark version:"
+          postmark --version
+          echo "Current folder contents:"
+          ls
+    - name: Get servers list
+      env:
+          POSTMARK_ACCOUNT_TOKEN: ${{ secrets.POSTMARK_ACCOUNT_TOKEN }}
+      run: |
+          postmark servers list --json > ./backups/postmark-servers-list.json
+    - name: Pull staging templates
+      env:
+          POSTMARK_SERVER_TOKEN: ${{ secrets.POSTMARK_SERVER_TOKEN_STG }}
+      run: |
+          postmark templates pull ./backups/staging --overwrite
+    - name: Pull production templates
+      env:
+          POSTMARK_SERVER_TOKEN: ${{ secrets.POSTMARK_SERVER_TOKEN_PRD }}
+      run: |
+          postmark templates pull ./backups/production --overwrite    
+    - name: Commit if there are changes
+      run: |
+          DT=`date +'%Y%m%d-%H%M%S'`
+          echo "Date and Time is $DT"
+          git config --global user.email "rick.cogley@esolia.co.jp"
+          git config --global user.name "Rick Cogley"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Postmark automatic backup as of $DT"
+          git push origin main
+    - name: Check folder contents
+      run: |
+          echo "====== POSTMARK BACKUPS ======"
+          tree
