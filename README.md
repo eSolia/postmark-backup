@@ -46,3 +46,5 @@ Adjust the `backup-postmark.yml` workflow in the `.github/workflows` folder:
 1. Edit the cron schedule. 
 2. Edit the github username and email params from Rick Cogley's. 
 3. Manually enable the workflow. 
+
+Once enabled, you can skip running the workflow by prepending `[skip ci]` to your git commit message. This is useful, say, if you want to just update the readme. 
