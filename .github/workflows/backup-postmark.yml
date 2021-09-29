@@ -1,5 +1,10 @@
 # Workflow to backup postmark templates
 name: backup-postmark
+author: 'Rick Cogley'
+description: 'This simple workflow pulls your Postmark templates and server info, then auto-commits if there are any changes from last run.'
+branding:
+  icon: 'check-square'
+  color: 'green'
 on:
   schedule:
     - cron:  "7 1 * * *" # Run on 7th min of 1st hour.
