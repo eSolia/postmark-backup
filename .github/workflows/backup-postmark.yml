@@ -28,8 +28,6 @@ jobs:
       run: npm install postmark-cli -g
     - name: Check
       run: |
-          echo "Is there jq just in case:" 
-          which jq
           echo "Postmark version:"
           postmark --version
           echo "Current folder contents:"
@@ -61,4 +59,4 @@ jobs:
     - name: Check folder contents
       run: |
           echo "====== POSTMARK BACKUPS ======"
-          tree
+          du -hsc *
