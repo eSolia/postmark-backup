@@ -4,7 +4,7 @@
 name: backup-postmark
 on:
   schedule:
-    - cron:  "45 20 * * *" # Run per cron schedule in GMT timezone
+    - cron:  "06 11 * * *" # Run per cron schedule in GMT timezone
   push:
     branches:
     - main

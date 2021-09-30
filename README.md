@@ -43,7 +43,8 @@ The `postmark templates pull` command expects a `POSTMARK_SERVER_TOKEN` variable
 
 Adjust the `backup-postmark.yml` workflow in the `.github/workflows` folder: 
 
-1. Edit the cron schedule. 
+1. Edit the cron schedule entering the time assuming the GMT timezone, to match when you want it to run where you are.
+   * `- cron:  "06 11 * * *" # 6th minute of 11th hour daily in GMT` 
 2. Edit the github username and email params from eSolia Bot's to a user with permissions to commit to your repo. 
    * `git config --global user.email "esolia.bot@esolia.co.jp"`
    * `git config --global user.name "esolia-bot"`
