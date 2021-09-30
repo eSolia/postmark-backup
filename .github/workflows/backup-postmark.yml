@@ -1,13 +1,10 @@
-# Workflow to backup postmark templates
+# GITHUB ACTIONS WORKFLOW #
+# Purpose: scheduled backup of templates and server info from Postmark account
+# Author: Rick Cogley, eSolia Inc.
 name: backup-postmark
-author: 'Rick Cogley'
-description: 'This simple workflow pulls your Postmark templates and server info, then auto-commits if there are any changes from last run.'
-branding:
-  icon: 'check-square'
-  color: 'green'
 on:
   schedule:
-    - cron:  "45 20 * * *" # Run per cron schedule
+    - cron:  "45 20 * * *" # Run per cron schedule in GMT timezone
   push:
     branches:
     - main
@@ -26,11 +23,11 @@ jobs:
           node-version: '14'
     - name: Setup postmark-cli
       run: npm install postmark-cli -g
-    - name: Check
+    - name: Check version and folder
       run: |
-          echo "Postmark version:"
+          echo "Get postmark version:"
           postmark --version
-          echo "Current folder contents:"
+          echo "List current folder contents:"
           ls
     - name: Get servers list
       env:
@@ -58,5 +55,5 @@ jobs:
           git push origin main
     - name: Check folder contents
       run: |
-          echo "====== POSTMARK BACKUPS ======"
+          echo "====== Template Disk Utilization ======"
           du -hsc *

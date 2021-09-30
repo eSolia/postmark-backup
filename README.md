@@ -1,8 +1,8 @@
-# postmark-backup
+# Postmark Backup
 
 [Postmark](https://postmarkapp.com/) is a superior email processor, and `postmark-cli` is their command line tool to access server info, push and pull templates, and send emails from the terminal.  
 
-We wanted to have a way to backup our Postmark templates automatically, so we coded this github workflow. It's not fully automatic but it works well enough. 
+We wanted to have a way to backup our Postmark templates automatically, so we coded this github workflow. It's not fully automatic but it works well enough to backup your templates and server information. 
 
 ## Setup
 ### Local
