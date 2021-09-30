@@ -2,11 +2,11 @@
 
 [Postmark](https://postmarkapp.com/) is a superior email processor, and `postmark-cli` is their command line tool to access server info, push and pull templates, and send emails from the terminal.  
 
-We wanted to have a way to backup our Postmark templates automatically, so we coded this Github Actions workflow. It's not fully automatic but it works well enough to backup your templates and server information. 
+We wanted to have a way to backup our Postmark templates automatically, so we coded this Github Actions workflow. There is about 10 minutes of setup for you to do, and it works well enough to backup your Postmark templates and server information. 
 
 ## Setup
 
-If you *fork* this public repository you get the benefit of being able to pull from upstream if we make changes. However, we think many would want their backups to be private, so we set this repository as a template. You can click "Use this template" to make a detached copy, and then set its visibility as private. You'll need to make any updates manually, though. 
+If you *fork* this public repository you get the benefit of being able to pull from upstream if we make changes, but the fork's visibility has to match that of the upstream source. This repo is public, but we think many would want their backups to be private, so we set this repository as a *template*. You can click "Use this template" to make a detached copy, and then set its visibility as private. You'll need to make any subsequent updates manually, though. 
 
 <img width="190" alt="image" src="https://user-images.githubusercontent.com/512328/135370352-c1a1cab8-b935-4c6c-89b7-ab4c9a9be794.png">
 
