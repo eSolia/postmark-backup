@@ -48,8 +48,8 @@ jobs:
       run: |
           DT=`date +'%Y%m%d-%H%M%S'`
           echo "Date and Time is $DT"
-          git config --global user.email "rick.cogley@esolia.co.jp"
-          git config --global user.name "Rick Cogley"
+          git config --global user.email "esolia.bot@esolia.co.jp"
+          git config --global user.name "esolia-bot"
           git add .
           git diff-index --quiet HEAD || git commit -m "Postmark automatic backup as of $DT"
           git push origin main

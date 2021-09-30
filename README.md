@@ -2,7 +2,7 @@
 
 [Postmark](https://postmarkapp.com/) is a superior email processor, and `postmark-cli` is their command line tool to access server info, push and pull templates, and send emails from the terminal.  
 
-We wanted to have a way to backup our Postmark templates automatically, so we coded this github workflow. It's not fully automatic but it works well enough to backup your templates and server information. 
+We wanted to have a way to backup our Postmark templates automatically, so we coded this Github Actions workflow. It's not fully automatic but it works well enough to backup your templates and server information. 
 
 ## Setup
 ### Local
@@ -44,7 +44,9 @@ The `postmark templates pull` command expects a `POSTMARK_SERVER_TOKEN` variable
 Adjust the `backup-postmark.yml` workflow in the `.github/workflows` folder: 
 
 1. Edit the cron schedule. 
-2. Edit the github username and email params from Rick Cogley's. 
+2. Edit the github username and email params from eSolia Bot's to a user with permissions to commit to your repo. 
+   * `git config --global user.email "esolia.bot@esolia.co.jp"`
+   * `git config --global user.name "esolia-bot"`
 3. Manually enable the workflow. 
 
 Once enabled, you can skip running the workflow by prepending `[skip ci]` to your git commit message. This is useful, say, if you want to just update the readme. 
